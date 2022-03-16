@@ -118,6 +118,11 @@ To deploy to aws, we use this command:
 
 ### 5. Quick look up to our terraform EC2 configuration
 
+
+> Changer les variables private_key_path,secret_path,main_dir de ce fichier terraform.tvars dans le dossier /app
+> Le nom du .perm doit etre le meme que l'auteur
+
+
 ````
 # Create an EC2 instance
 resource "aws_instance" "ec2" {
