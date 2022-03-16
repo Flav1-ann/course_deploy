@@ -102,6 +102,9 @@ services:
 ### 4. Deployment on AWS cloud with terraform 
 
 
+> Changer les variables private_key_path,secret_path,main_dir de ce fichier terraform.tvars dans le dossier /app
+> Le nom du .perm doit etre le meme que l'auteur
+
 We need to init a terraform project before being able to deploy to aws cloud.
 
 > cd app/
@@ -119,8 +122,7 @@ To deploy to aws, we use this command:
 ### 5. Quick look up to our terraform EC2 configuration
 
 
-> Changer les variables private_key_path,secret_path,main_dir de ce fichier terraform.tvars dans le dossier /app
-> Le nom du .perm doit etre le meme que l'auteur
+
 
 
 ````
