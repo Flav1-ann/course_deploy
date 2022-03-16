@@ -1,36 +1,37 @@
 # course_deploy
 
-
 ### 1. Containerizing the application with Docker
 
 ##### Creating the DockerFile
 
 ``` dockerfile
-#file : Dockerfile
+FROM openjdk:15-jdk-alpine
 
-# From maven and java image
-FROM maven:3.8.4-openjdk-11
 
-# Update
-RUN apt-get update
+LABEL MAINTENER="Flavien ANNAIX"
 
-# Create data directory in container and copy content into it
-COPY . ./data
 
-# Choose data directory as working directory
-WORKDIR ./data
+RUN apk update && \
+    apk upgrade && \
+    apk add git &&\
+    apk add maven &&\
+    apk add bash
 
-# Clean and create package using maven project management tool. Skip running test
+RUN git clone https://github.com/Flav1-ann/course /course
+
+WORKDIR /course
+
 RUN mvn clean package -DskipTests=true
 
-# Expose port 80 on this container
+RUN cp target/*.jar app.jar
+
+#RUN addgroup -S spring && adduser -S spring -G spring
+
 EXPOSE 80
 
-# Go to target directory
-WORKDIR ./target
+#USER spring:spring
 
-# Run the springboot app
-CMD ["java", "-jar -Dspring.profiles.active=prod", "shop-crm-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
 ```
 
 ##### Creating the docker image and hosting it on the docker hub
@@ -53,7 +54,7 @@ CMD ["java", "-jar -Dspring.profiles.active=prod", "shop-crm-0.0.1-SNAPSHOT.jar"
 
 
 
-### 3. Create docker compose file to add a MySQL database container
+### 2. Create docker compose file to add a MySQL database container
 
 ```dockerfile
 version: '3.4'
@@ -82,7 +83,7 @@ services:
 
 
 
-### 4. Automating creation of the runtime environment for our application with Ansible
+### 3. Automating creation of the runtime environment for our application with Ansible
 
 ```
 + ansible.cfg			#Configuration of ansible
@@ -98,8 +99,7 @@ services:
 
 
 
-### 5. Deployment on AWS cloud with terraform 
-
+### 4. Deployment on AWS cloud with terraform 
 
 
 We need to init a terraform project before being able to deploy to aws cloud.
@@ -116,7 +116,7 @@ To deploy to aws, we use this command:
 >
 > terraform apply		  #Execute plan 
 
-### 6. Quick look up to our terraform EC2 configuration
+### 5. Quick look up to our terraform EC2 configuration
 
 ````
 # Create an EC2 instance
