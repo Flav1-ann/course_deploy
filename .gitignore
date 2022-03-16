@@ -1,0 +1,9 @@
+flavien.pem
+ssh_key.pem
+app/.terraform/providers/registry.terraform.io/hashicorp/aws/3.72.0/linux_amd64/terraform-provider-aws_v3.72.0_x5
+app/terraform.tfstate.backup
+app/private_data.txt
+secret.ini
+secret.ini
+secret.ini
+app/private_data.txt

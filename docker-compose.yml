@@ -1,34 +1,23 @@
-version: '3.3'
+version: '3.4'
 services:
-  docker-mysql:
-    image: mysql:8.0
-    container_name: docker-mysql
+  server:
+    image: flav1ann/course
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: course
-      MYSQL_USER: spring
-      MYSQL_PASSWORD: spring
-    ports:
-      - "3306:3306"
-    networks:
-      - app-network
-  spring:
-    container_name: springapp
-    restart: always
-    image: course:latest
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql/course?useSSL=false&allowPublicKeyRetrieval=true
-      SPRING_DATASOURCE_USERNAME: spring
-      SPRING_DATASOURCE_PASSWORD: spring
-      SPRING_PORT: 5000
-    ports:
-      - "5000:5000"
-    networks:
-      - app-network
     depends_on:
-      - docker-mysql
-networks:
-  app-network:
-    name: app-network
-    driver: bridge
+      - db
+    network_mode: host
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    cap_add:
+      - SYS_NICE  
+    environment:
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=no
+    ports:
+      - 3306:3306
+

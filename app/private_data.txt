@@ -1,0 +1,12 @@
+IP : 34.195.137.163, ID: i-007302f8a5c3496c9, Zone: us-east-1a
+IP : 34.195.137.163, ID: i-0a63568dad0042968, Zone: us-east-1a
+IP : 34.195.137.163, ID: i-049c1a123a27fe02e, Zone: us-east-1a
+IP : 34.195.137.163, ID: i-0107c2c35721e2815, Zone: us-east-1a
+IP : 3.228.252.167, ID: i-0181cf033abcc92a7, Zone: us-east-1a
+IP : 107.21.29.138, ID: i-087e8cb12a4367314, Zone: us-east-1a
+IP : 34.200.9.2, ID: i-0890efda2460a0e04, Zone: us-east-1a
+IP : 34.234.12.38, ID: i-0c0a6f83860402ef1, Zone: us-east-1a
+IP : 34.231.61.82, ID: i-099dcb7331cfed257, Zone: us-east-1a
+IP : 184.72.170.254, ID: i-04dabed0e102bbc5a, Zone: us-east-1a
+IP : 3.231.51.64, ID: i-0400e5d7249b6437c, Zone: us-east-1a
+IP : 3.220.51.2, ID: i-0bb204e5aa2b3463e, Zone: us-east-1a

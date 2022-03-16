@@ -3,7 +3,7 @@ resource "aws_instance" "ec2" {
   instance_type          = var.instance_type
   security_groups        = ["${var.sg_name}"]
   availability_zone      = var.availability_zone
-  key_name               = "${var.author_name}-kp"
+  key_name               = "${var.author_name}"
 
   tags = {
     Name : "ec2-${var.author_name}"
